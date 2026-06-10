@@ -40,19 +40,29 @@ describe('Calculator library - basic operations', () => {
   test('modulo operation', () => {
     expect(mod(10, 3)).toBe(1);
     expect(mod(-10, 3)).toBe(-1); // JS remainder keeps sign of dividend
+    // image example
+    expect(mod(5, 2)).toBe(1);
   });
 
   test('power operation', () => {
     expect(pow(2, 8)).toBe(256);
     expect(pow(2.5, 2)).toBeCloseTo(6.25);
+    // image example
+    expect(pow(2, 3)).toBe(8);
   });
 
   test('square root operation', () => {
     expect(sqrt(9)).toBe(3);
     expect(sqrt(2)).toBeCloseTo(Math.sqrt(2));
+    // image example
+    expect(sqrt(16)).toBe(4);
   });
 
   test('sqrt of negative throws', () => {
     expect(() => sqrt(-1)).toThrow('Square root of negative number');
+  });
+
+  test('modulo by zero throws', () => {
+    expect(() => mod(5, 0)).toThrow('Division by zero');
   });
 });
