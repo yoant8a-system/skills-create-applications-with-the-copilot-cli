@@ -1,4 +1,4 @@
-const { add, sub, mul, div } = require('../calculator-lib');
+const { add, sub, mul, div, mod, pow, sqrt } = require('../calculator-lib');
 
 describe('Calculator library - basic operations', () => {
   test('2 + 3 = 5 (image example)', () => {
@@ -34,5 +34,25 @@ describe('Calculator library - basic operations', () => {
   test('invalid numeric input throws', () => {
     expect(() => add('foo', 1)).toThrow(TypeError);
     expect(() => sub(1, NaN)).toThrow(TypeError);
+  });
+
+  // New operation tests
+  test('modulo operation', () => {
+    expect(mod(10, 3)).toBe(1);
+    expect(mod(-10, 3)).toBe(-1); // JS remainder keeps sign of dividend
+  });
+
+  test('power operation', () => {
+    expect(pow(2, 8)).toBe(256);
+    expect(pow(2.5, 2)).toBeCloseTo(6.25);
+  });
+
+  test('square root operation', () => {
+    expect(sqrt(9)).toBe(3);
+    expect(sqrt(2)).toBeCloseTo(Math.sqrt(2));
+  });
+
+  test('sqrt of negative throws', () => {
+    expect(() => sqrt(-1)).toThrow('Square root of negative number');
   });
 });

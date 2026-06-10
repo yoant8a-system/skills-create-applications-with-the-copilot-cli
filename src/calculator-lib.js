@@ -33,4 +33,24 @@ function div(x, y) {
   return toNumber(x) / denom;
 }
 
-module.exports = { add, sub, mul, div };
+function mod(x, y) {
+  const denom = toNumber(y);
+  if (denom === 0) {
+    throw new Error('Division by zero');
+  }
+  return toNumber(x) % denom;
+}
+
+function pow(base, exponent) {
+  return Math.pow(toNumber(base), toNumber(exponent));
+}
+
+function sqrt(n) {
+  const v = toNumber(n);
+  if (v < 0) {
+    throw new Error('Square root of negative number');
+  }
+  return Math.sqrt(v);
+}
+
+module.exports = { add, sub, mul, div, mod, pow, sqrt };
